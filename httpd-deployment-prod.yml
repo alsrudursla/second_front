@@ -2,12 +2,12 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
  name: httpd-deployment-prod
- namespace: prod
+ namespace: lmk-prod
 spec:
  selector:
    matchLabels:
     type: web
- replicas: 2
+ replicas: 1
  template:
    metadata:
      labels:
@@ -16,9 +16,6 @@ spec:
     containers:
     - name: container
       image: nuy0307/second_front:latest
-      envFrom:
-      - configMapRef:
-          name: httpd-cm-prod
       ports:
       - containerPort: 80
       resources:
